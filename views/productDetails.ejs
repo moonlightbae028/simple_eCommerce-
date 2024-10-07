@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cart - KickCraze</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+        }
+
+        /* Navigation Bar */
+        .top-bar {
+            background-color: #333;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+        }
+
+        .top-bar .title-area h1 a {
+            color: #e46e24;
+            text-decoration: none;
+            font-size: 1.8em;
+        }
+
+        .top-bar .left {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .top-bar li {
+            padding: 0 15px;
+        }
+
+        .top-bar a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.1em;
+        }
+
+        .top-bar a:hover {
+            color: #ddd;
+        }
+
+        /* Cart Container */
+        .cart-container {
+            max-width: 800px;
+            margin: 20px auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        /* Cart Item */
+        .cart-item {
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #ddd;
+            padding: 10px 0;
+        }
+
+        .cart-item img {
+            width: 80px;
+            height: 80px;
+            border-radius: 8px;
+            margin-right: 15px;
+        }
+
+        .cart-item-info {
+            flex-grow: 1;
+        }
+
+        .cart-item strong {
+            font-size: 1.2em;
+            display: block;
+        }
+
+        .cart-item .price {
+            color: #555;
+            font-size: 1.1em;
+        }
+
+        .remove-button {
+            background-color: #e74c3c;
+            border: none;
+            color: white;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .remove-button:hover {
+            background-color: #c0392b;
+        }
+
+        /* Total and Checkout */
+        .total {
+            font-size: 1.5em;
+            margin-top: 20px;
+            text-align: right;
+        }
+
+        .checkout-button {
+            display: block;
+            background-color: #e67e22;
+            border: none;
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            font-size: 1.2em;
+            margin: 20px auto;
+            text-align: center;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .checkout-button:hover {
+            background-color: #d35400;
+        }
+
+        /* Empty Cart Message */
+        .empty-cart {
+            text-align: center;
+            font-size: 1.2em;
+            color: #888;
+            margin-top: 20px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            position: relative;
+            width: 100%;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <nav class="top-bar">
+        <div class="title-area">
+            <h1><a href="/">KickCraze</a></h1>
+        </div>
+        <section class="top-bar-section">
+            <ul class="left">
+                <li><a href="/about">About</a></li>
+                <li><a href="/products">KickCraze</a></li>
+                <li class="active"><a href="/cart">View Cart</a></li>
+                <li><a href="/orders">My Orders</a></li>
+                <li><a href="/contact">Contact</a></li>
+                <% if (user) { %>
+                    <li><a href="/profile">My Account</a></li>
+                    <li><a href="/logout">Log Out</a></li>
+                <% } else { %>
+                    <li><a href="/login">Log In</a></li>
+                    <li><a href="/register">Register</a></li>
+                <% } %>
+            </ul>
+        </section>
+    </nav>
+
+    <div class="cart-container">
+        <h1>Your Cart</h1>
+
+        <% if (cartItems && cartItems.length > 0) { %>
+            <form action="/orders" method="POST">
+                <% cartItems.forEach(item => { %>
+                    <div class="cart-item">
+                        <img src="<%= item.picture && item.picture.length > 0 ? '/uploads/' + item.picture : '/uploads/default.jpg' %>" alt="<%= item.name %>">
+                        <div class="cart-item-info">
+                            <strong><%= item.name %></strong>
+                            <span class="price">$<%= item.price.toFixed(2) %> x <%= item.quantity %></span>
+                            <form action="/remove-from-cart" method="POST" style="display:inline;">
+                                <input type="hidden" name="itemId" value="<%= item.id %>"> <!-- Assuming each item has a unique ID -->
+                                <button type="submit" class="remove-button">Remove</button>
+                            </form>
+                        </div>
+                    </div>
+                <% }) %>
+                <p class="total">Total: $<%= totalAmount.toFixed(2) %></p>
+                
+                <!-- Hidden inputs to send cart items to the server -->
+                <input type="hidden" name="cartItems" value='<%= JSON.stringify(cartItems) %>'>
+                <input type="hidden" name="totalAmount" value="<%= totalAmount %>">
+                
+                <button type="submit" class="checkout-button">Checkout</button>
+                
+            </form>
+        <% } else { %>
+            <p class="empty-cart">Your cart is currently empty.</p>
+        <% } %>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 KickCraze. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

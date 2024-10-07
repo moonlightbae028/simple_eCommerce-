@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Panel</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+        }
+
+        /* Navigation Bar */
+        .top-bar {
+            background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent */
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+        }
+
+        .top-bar .title-area h1 a {
+            color: #e46e24;
+            text-decoration: none;
+            font-size: 1.8em;
+        }
+
+        .top-bar .title-area h1 {
+            margin: 0; /* Removes any margin from the h1 */
+        }
+
+        .top-bar .left {
+            list-style: none;
+            margin: 0;
+            padding-right: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .top-bar li {
+            padding: 0 10px;
+        }
+
+        .top-bar a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.1em;
+        }
+
+        .top-bar a:hover {
+            color: #ddd;
+        }
+
+        h1 {
+            text-align: center;
+            color: #000000;
+            margin: 20px 0;
+        }
+
+        h2 {
+            color: #000000;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 10px;
+            margin-top: 20px;
+        }
+
+        form input[type="text"],
+        form input[type="number"],
+        form textarea,
+        form input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        form button {
+            background-color: #ffbd83;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1.1em;
+        }
+
+        form button:hover {
+            background-color: #d35400;
+        }
+
+        /* Glassmorphism Table Styles */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
+            backdrop-filter: blur(10px); /* Glassmorphism effect */
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+        }
+
+        thead {
+            background-color: rgba(0, 123, 255, 0.6); /* Semi-transparent blue */
+            color: #fff;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border */
+        }
+
+        tr:hover {
+            background-color: rgba(255, 255, 255, 0.2); /* Light gray on hover */
+        }
+
+        button.approve, button.reject {
+    padding: 5px 10px;  /* Adjusted padding */
+    font-size: 0.9em;   /* Smaller font size */
+    border: none;       /* No border for a cleaner look */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer;    /* Pointer cursor on hover */
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+
+        button.approve:hover {
+            background-color: #218838; /* Darker green */
+        }
+
+
+        button.reject:hover {
+            background-color: #c82333; /* Darker red */
+        }
+
+        /* Footer */
+        footer {
+            background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent */
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            position: relative;
+            width: 100%;
+            font-size: 0.9em;
+            margin-top: 20px; /* Space above footer */
+        }
+    </style>
+</head>
+<body>
+    <nav class="top-bar">
+        <div class="title-area">
+            <h1><a href="/">Admin Panel</a></h1>
+        </div>
+        <section class="top-bar-section">
+            <ul class="left">
+                <li><a href="/pending-orders">Pending Orders</a></li>
+                <li><a href="/logout">Log Out</a></li>
+            </ul>
+        </section>
+    </nav>
+
+    <h2 style="text-align: center;">Pending Orders</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Order ID</th>
+                <th>Username</th>
+                <th>Total</th>
+                <th>Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Dummy Data -->
+            <tr>
+                <td>001</td>
+                <td>Laireen</td>
+                <td>$59.99</td>
+                <td>2024-10-01</td>
+                <td>
+                    <form action="/pending-orders/approve/001" method="POST" style="display:inline;">
+                        <button type="submit" class="approve">Approve</button>
+                    </form>
+                    <form action="/pending-orders/reject/001" method="POST" style="display:inline;">
+                        <button type="submit" class="reject">Reject</button>
+                    </form>
+                </td>
+            </tr>
+            <tr>
+                <td>002</td>
+                <td>AllenD</td>
+                <td>$89.50</td>
+                <td>2024-10-02</td>
+                <td>
+                    <form action="/pending-orders/approve/002" method="POST" style="display:inline;">
+                        <button type="submit" class="approve">Approve</button>
+                    </form>
+                    <form action="/pending-orders/reject/002" method="POST" style="display:inline;">
+                        <button type="submit" class="reject">Reject</button>
+                    </form>
+                </td>
+            </tr>
+            <tr>
+                <td>003</td>
+                <td>Jamaica</td>
+                <td>$120.00</td>
+                <td>2024-10-01</td>
+                <td>
+                    <form action="/pending-orders/approve/003" method="POST" style="display:inline;">
+                        <button type="submit" class="approve">Approve</button>
+                    </form>
+                    <form action="/pending-orders/reject/003" method="POST" style="display:inline;">
+                        <button type="submit" class="reject">Reject</button>
+                    </form>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 KickCraze. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

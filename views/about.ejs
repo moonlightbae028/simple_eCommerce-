@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us || KickCraze</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Make sure the body takes the full height */
+            overflow: hidden; /* Prevent overflow for glassmorphism */
+        }
+
+        /* Navigation Bar */
+        .top-bar {
+            background-color: #333;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+        }
+
+        .top-bar .title-area h1 a {
+            color: #e46e24;
+            text-decoration: none;
+            padding-left: 20px;
+            font-size: 1.8em;
+        }
+
+        .top-bar .right {
+            list-style: none; /* This removes the bullet points */
+            margin: 0;
+            padding-right: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .top-bar li {
+            padding: 0 10px;
+        }
+
+        .top-bar a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.1em;
+        }
+
+        .top-bar a:hover {
+            color: #ddd;
+        }
+
+        /* Active link style */
+        .top-bar .right .active a {
+            text-decoration: underline; /* Adds an underline */
+            color: #ddd; /* Change the color for active link */
+        }
+
+        /* Content Styles */
+        .row {
+            flex: 1; /* Allow the row to grow and take available space */
+            margin-top: 30px;
+            padding: 20px;
+            display: flex;
+            justify-content: center; /* Center content horizontally */
+            align-items: center; /* Center content vertically */
+        }
+
+        /* Glassmorphism Box */
+        .glassmorphism-box {
+            background: rgba(255, 255, 255, 0.2); /* Semi-transparent background */
+            backdrop-filter: blur(15px); /* Increased blur effect */
+            border-radius: 15px; /* Rounded corners */
+            padding: 30px; /* Spacing inside the box */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+            max-width: 800px; /* Maximum width */
+            text-align: center; /* Center text */
+            border: 1px solid rgba(255, 255, 255, 0.5); /* Optional border for contrast */
+        }
+
+        .row p {
+            font-size: 1.1em;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            color: #000; /* Text color */
+        }
+
+        footer {
+            background-color: #333; /* Match footer background color */
+            color: #fff; /* Match footer text color */
+            padding: 20px; /* Match footer padding */
+            text-align: center;
+            font-size: 0.9em; /* Match footer font size */
+        }
+
+        footer p {
+            color: #fff; /* Ensure footer text is white */
+        }
+    </style>
+</head>
+<body>
+    <nav class="top-bar">
+        <div class="title-area">
+          <h1><a href="/">KickCraze</a></h1>
+        </div>
+    
+        <section class="top-bar-section">
+            <!-- Right Nav Section -->
+            <ul class="right">
+                <li class="active"><a href="/about">About</a></li>
+                <li><a href="/products">Shoe Collection</a></li>
+                <li><a href="/cart">View Cart</a></li>
+                <li><a href="/orders">My Orders</a></li>
+                <li><a href="/contact">Contact</a></li>
+                <% if (user) { %> <!-- Check if user is logged in -->
+                    <li><a href="/profile">My Account</a></li>
+                    <li><a href="/logout">Log Out</a></li>
+                <% } else { %> <!-- If not logged in, show login/register links -->
+                    <li><a href="/login">Log In</a></li>
+                    <li><a href="/register">Register</a></li>
+                <% } %>
+            </ul>
+        </section>
+    </nav>
+
+    <div class="row">
+        <div class="glassmorphism-box">
+            <p>Welcome to KickCraze, your ultimate destination for premium footwear. Our mission is to provide a curated selection of high-quality shoes that cater to diverse tastes and preferences.</p>
+
+            <p>At KickCraze, we believe that shoes are more than just an accessory—they're a statement of style and comfort. We strive to offer a unique range of products, including popular brands and exclusive lines that you won't find anywhere else.</p>
+
+            <p>Why choose KickCraze? Our commitment to quality, exceptional customer service, and a seamless shopping experience sets us apart. Whether you're looking for a new pair of sneakers or a classic style, we're here to help you find the perfect footwear.</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 KickCraze. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

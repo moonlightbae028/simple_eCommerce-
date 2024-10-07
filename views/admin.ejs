@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Panel</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+        }
+
+        /* Navigation Bar */
+        .top-bar {
+            background-color: #333;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+        }
+
+        .top-bar .title-area h1 a {
+            color: #e46e24;
+            text-decoration: none;
+            font-size: 1.8em;
+        }
+
+        .top-bar .title-area h1 {
+            margin: 0; /* Removes any margin from the h1 */
+        }
+
+        .top-bar .left {
+            list-style: none;
+            margin: 0;
+            padding-right: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .top-bar li {
+            padding: 0 10px;
+        }
+
+        .top-bar a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.1em;
+        }
+
+        .top-bar a:hover {
+            color: #ddd;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin: 20px 0;
+        }
+
+        h2 {
+            color: #555;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 10px;
+            margin-top: 20px;
+        }
+
+        /* Glassmorphism Style */
+        .glass {
+            background: rgba(255, 255, 255, 0.1); /* Slightly opaque white background */
+            border-radius: 10px; /* Rounded corners */
+            backdrop-filter: blur(10px); /* Frosted glass effect */
+            padding: 20px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+            border: 1px solid rgba(255, 255, 255, 0.3); /* Light border */
+            margin: 20px auto;
+        }
+
+        form input[type="text"],
+        form input[type="number"],
+        form textarea,
+        form input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        form button {
+            background-color: #e67e22;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1.1em;
+        }
+
+        form button:hover {
+            background-color: #d35400;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            position: relative;
+            width: 100%;
+            font-size: 0.9em;
+            margin-top: 20px; /* Space above footer */
+        }
+    </style>
+</head>
+<body>
+    <nav class="top-bar">
+        <div class="title-area">
+            <h1><a href="/">Admin Panel</a></h1>
+        </div>
+        <section class="top-bar-section">
+            <ul class="left">
+                <li><a href="/pending-orders">Pending Orders</a></li>
+                <li><a href="/logout">Log Out</a></li>
+            </ul>
+        </section>
+    </nav>
+
+    <h2 style="text-align: center;">Add Product</h2>
+    <div class="glass" style="max-width: 600px;">
+        <form action="/admin/add-product" method="POST" enctype="multipart/form-data">
+            <input type="text" name="name" placeholder="Product Name" required>
+            <input type="number" name="price" placeholder="Price" step="0.01" required>
+            <textarea name="description" placeholder="Description"></textarea>
+            <input type="number" name="stock" placeholder="Stock" required>
+            <input type="file" name="picture" accept="image/*" required>
+            <button type="submit">Add Product</button>
+        </form>          
+    </div>
+    
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 KickCraze. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

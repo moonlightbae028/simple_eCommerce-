@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Profile</title>
+    <link rel="stylesheet" href="/styles.css"> <!-- Link to the external stylesheet if needed -->
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+        }
+
+        /* Navbar Styling */
+        .top-bar {
+            background-color: #333;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+        }
+
+        .top-bar .title-area h1 a {
+            color: #e46e24;
+            text-decoration: none;
+            font-size: 1.8em;
+        }
+
+        .top-bar .navigation {
+            list-style: none;
+            display: flex;
+        }
+
+        .top-bar li {
+            padding: 0 15px;
+        }
+
+        .top-bar a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.1em;
+        }
+
+        .top-bar a:hover {
+            color: #ddd;
+        }
+
+        /* Profile container */
+        .profile-container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile-container h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 2em;
+        }
+
+        .profile-container label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .profile-container input[type="text"],
+        .profile-container input[type="email"],
+        .profile-container select {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 100%;
+            margin-bottom: 15px;
+        }
+
+        .profile-container button {
+            padding: 12px;
+            background-color: #e67e22;
+            color: white;
+            font-size: 1.1em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            display: block;
+            margin: 20px auto;
+            width: fit-content;
+        }
+
+        .profile-container button:hover {
+            background-color: #d35400;
+        }
+
+        /* Error message */
+        .profile-container p {
+            color: red;
+            text-align: center;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            font-size: 0.9em;
+        }
+
+    </style>
+</head>
+<body>
+    <nav class="top-bar">
+        <div class="title-area">
+            <h1><a href="/">KickCraze</a></h1>
+        </div>
+        <ul class="navigation">
+            <li><a href="/products">KickCraze</a></li>
+            <li><a href="/cart">View Cart</a></li>
+            <li><a href="/orders">My Orders</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <% if (user) { %>
+                <li><a href="/profile">My Account</a></li>
+                <li><a href="/logout">Log Out</a></li>
+            <% } else { %>
+                <li><a href="/login">Log In</a></li>
+                <li><a href="/register">Register</a></li>
+            <% } %>
+        </ul>
+    </nav>
+
+    <div class="profile-container">
+        <form action="/edit-profile?id=<%= user.id %>" method="POST">
+
+            <input type="text" name="fullName" value="<%= user.fullName %>" required>
+            <input type="text" name="username" value="<%= user.username %>" required>
+            <input type="email" name="email" value="<%= user.email %>" required>
+            <select name="userType" required>
+                <option value="user" <%= user.userType === 'user' ? 'selected' : '' %>>User</option>
+                <option value="admin" <%= user.userType === 'admin' ? 'selected' : '' %>>Admin</option>
+            </select>
+            
+
+            <button type="submit">Update Profile</button>
+        </form>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 KickCraze. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

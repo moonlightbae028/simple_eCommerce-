@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Orders</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Navigation Bar */
+        .top-bar {
+            background-color: #333;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+        }
+
+        .top-bar .title-area h1 a {
+            color: #e46e24;
+            text-decoration: none;
+            font-size: 1.8em;
+        }
+
+        .top-bar .right {
+            list-style: none;
+            display: flex;
+        }
+
+        .top-bar a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 1.1em;
+        }
+
+        /* Main Content */
+        .container {
+            padding: 20px;
+            flex: 1;
+        }
+
+        h1 {
+            text-align: center;
+            color: #343a40;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        a.button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        a.button:hover {
+            background-color: #218838;
+        }
+
+        .no-orders {
+            text-align: center;
+            font-size: 18px;
+            color: #6c757d;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            margin-top: auto;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 24px;
+            }
+
+            th, td {
+                padding: 8px;
+            }
+
+            a.button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="top-bar">
+        <div class="title-area">
+            <h1><a href="/">KickCraze</a></h1>
+        </div>
+        <div>
+            <ul class="right">
+                <li><a href="/about">About</a></li>
+                <li><a href="/products">Products</a></li>
+                <li><a href="/cart">Cart</a></li>
+                <li><a href="/orders">Orders</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Orders Table -->
+    <div class="container">
+        <h1>Your Orders</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Order ID</th>
+                    <th>Total</th>
+                    <th>Status</th>
+                    <th>Created At</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>$100.00</td>
+                    <td>Shipped</td>
+                    <td>2024-09-20 14:48</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>$80.00</td>
+                    <td>Processing</td>
+                    <td>2024-09-21 11:15</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>$170.00</td>
+                    <td>Delivered</td>
+                    <td>2024-09-22 09:30</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Proceed to Checkout Button -->
+        <a href="/checkout" class="button">Proceed to Checkout</a>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 KickCraze. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

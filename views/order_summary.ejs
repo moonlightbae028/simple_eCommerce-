@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Summary - Your Store</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #f8f8f8, #e0e0e0);
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Navigation Bar */
+        .top-bar {
+            background-color: #333;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+        }
+
+        .top-bar .title-area h1 a {
+            color: #e46e24;
+            text-decoration: none;
+            font-size: 1.8em;
+        }
+
+        .top-bar .right {
+            list-style: none;
+            display: flex;
+        }
+
+        .top-bar a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 1.1em;
+        }
+
+        /* Order Summary Styles */
+        .order-summary-container {
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.3); /* Semi-transparent */
+            border-radius: 20px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px); /* Frosted-glass effect */
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.18); /* Light border */
+        }
+
+        h1 {
+            text-align: center;
+            color: #343a40;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            color: #343a40;
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        p {
+            font-size: 16px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: rgba(255, 255, 255, 0.6); /* More opaque for better readability */
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: rgba(255, 255, 255, 0.3); /* Slightly transparent */
+            font-weight: bold;
+        }
+
+        td {
+            background-color: rgba(255, 255, 255, 0.2); /* Even more transparent */
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            margin-top: auto;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="top-bar">
+        <div class="title-area">
+            <h1><a href="/">KickCraze</a></h1>
+        </div>
+        <div>
+            <ul class="right">
+                <li><a href="/about">About</a></li>
+                <li><a href="/products">Products</a></li>
+                <li><a href="/cart">Cart</a></li>
+                <li><a href="/orders">Orders</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Order Summary Container with Glassmorphism -->
+    <div class="order-summary-container">
+        <h1>Order Summary</h1>
+        <p>Order ID: 12345</p> <!-- Static dummy order ID -->
+        <p>Total Amount: $835.00</p> <!-- Calculated total -->
+
+        <h2>Order Items</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Merrell Moab 2 Vent</td>
+                    <td>$120.00</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>Columbia Newton Ridge Plus II</td>
+                    <td>$100.00</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>Allen Edmonds Park Avenue</td>
+                    <td>$395.00</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>Birkenstock Arizona</td>
+                    <td>$100.00</td>
+                    <td>1</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 KickCraze. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

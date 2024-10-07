@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - KickCraze</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+        }
+
+        /* Navbar Styling */
+        .top-bar {
+            background-color: #333;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+        }
+
+        .top-bar .title-area h1 a {
+            color: #e46e24;
+            text-decoration: none;
+            padding-left: 20px;
+            font-size: 1.8em;
+        }
+
+        .top-bar .title-area h1 {
+            margin: 0;
+        }
+
+        .top-bar .left {
+            list-style: none;
+            margin: 0;
+            padding-right: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .top-bar li {
+            padding: 0 10px;
+        }
+
+        .top-bar a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.1em;
+        }
+
+        .top-bar a:hover {
+            color: #ddd;
+        }
+
+        /* Registration Form */
+        .main-container {
+            display: flex;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            max-width: 900px; /* Set max width */
+            width: 90%; /* Set width to 90% */
+            margin: 40px auto; /* Reduced margin to center better */
+            position: relative;
+            border: 1px solid #ccc; /* Added border for better definition */
+        }
+
+        .login-container {
+            flex: 1;
+            padding: 20px; /* Increase padding for a bit more space */
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start; /* Align to start to use space efficiently */
+            background-color: #fafafa; /* Light background for the form */
+        }
+
+        .login-container h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px; /* Added margin for spacing */
+            font-size: 1.8em; /* Increased font size */
+        }
+
+        .login-container label {
+            margin-top: 15px; /* Add some space above the label */
+            font-weight: bold; /* Make the label text bold for better visibility */
+            display: block; /* Ensures the label takes full width */
+            width: 95%; /* Match the input width */
+        }
+
+        .login-container input[type="text"],
+        .login-container input[type="email"],
+        .login-container input[type="password"],
+        .login-container select {
+            width: 100%;
+            padding: 10px; /* Consistent padding */
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px; /* Adjusted border radius */
+            font-size: 1em;
+            box-sizing: border-box; /* Include padding and border in width/height */
+        }
+
+        .login-container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #e67e22;
+            color: white;
+            border: none;
+            font-size: 1.1em;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .login-container button:hover {
+            background-color: #d35400; /* Darker color on hover */
+        }
+
+        .login-container p {
+            text-align: center;
+        }
+
+        .login-container a {
+            color: #e67e22;
+            text-decoration: none;
+        }
+        .glass-effect {
+            background: rgba(114, 4, 4, 0.2); /* Semi-transparent background */
+            backdrop-filter: blur(40px); /* Blurring the background */
+            border-radius: 15px; /* Rounded corners */
+            padding: 20px; /* Padding for inner content */
+            border: 1px solid rgba(255, 255, 255, 0.3); /* Optional border for definition */
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+            width: 100%;
+            max-width: 400px; /* Max width for form */
+        }
+        /* Footer Styling */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="top-bar">
+        <div class="title-area">
+            <h1><a href="/">KickCraze</a></h1>
+        </div>
+        <ul class="left">
+            <% if (typeof user !== "undefined" && user) { %>
+                <li><a href="/profile">My Account</a></li>
+                <li><a href="/logout">Log Out</a></li>
+            <% } else { %>
+                <li><a href="/login">Log In</a></li>
+                <li><a href="/register">Register</a></li>
+            <% } %>
+        </ul>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Registration Form -->
+        <div class="login-container">
+            
+            <h2>Create New Account</h2>
+            <form action="/register" method="POST">
+                <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required>
+                <input type="text" id="username" name="username" placeholder="Choose a username" required>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                
+                <button type="submit">Register</button>
+            </form>
+            <p>Already have an account? <a href="/login">Log in here</a>.</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 KickCraze. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

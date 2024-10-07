@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us || KickCraze</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Make sure the body takes the full height */
+        }
+
+        /* Navigation Bar */
+        .top-bar {
+            background-color: #333;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+        }
+
+        .top-bar .title-area h1 a {
+            color: #e46e24;
+            text-decoration: none;
+            padding-left: 20px;
+            font-size: 1.8em;
+        }
+
+        .top-bar .right {
+            list-style: none; /* This removes the bullet points */
+            margin: 0;
+            padding-right: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .top-bar li {
+            padding: 0 10px;
+        }
+
+        .top-bar a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.1em;
+        }
+
+        .top-bar a:hover {
+            color: #ddd;
+        }
+
+        /* Active link style */
+        .top-bar .right .active a {
+            text-decoration: underline; /* Adds an underline */
+            color: #ddd; /* Change the color for active link */
+        }
+
+        /* Content Styles */
+        .row {
+            flex: 1; /* Allow the row to grow and take available space */
+            margin-top: 30px;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* Glassmorphism effect */
+        .contact-container {
+            max-width: 600px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.2); /* Semi-transparent background */
+            backdrop-filter: blur(10px); /* Blur effect */
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            margin-top: 20px;
+        }
+
+        .contact-info {
+            font-size: 1.1em;
+            margin-bottom: 20px;
+        }
+
+        /* Contact list styles */
+        .contact-list {
+            list-style-type: none; /* Remove bullet points */
+            padding: 0; /* Remove default padding */
+        }
+
+        .contact-list li {
+            display: flex;
+            align-items: center; /* Center items vertically */
+            margin: 10px 0; /* Add spacing between items */
+        }
+
+        .contact-list img {
+            border-radius: 50%; /* Make the image round */
+            width: 40px; /* Set image size */
+            height: 40px; /* Set image size */
+            margin-right: 10px; /* Space between image and name */
+        }
+
+        /* Input styles */
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1em;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #e67e22;
+            color: white;
+            border: none;
+            font-size: 1.1em;
+            cursor: pointer;
+            margin-top: 10px;
+            border-radius: 4px;
+        }
+
+        button:hover {
+            background-color: #d35400;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333; /* Ensure footer background matches */
+            color: white; /* Ensure footer text color matches */
+            text-align: center;
+            padding: 20px 0; /* Add some padding for aesthetics */
+            position: relative;
+            width: 100%;
+            font-size: 0.9em;
+            margin-top: auto; /* Push footer to the bottom */
+        }
+
+        footer p {
+            color: #fff; /* Match footer text color */
+        }
+    </style>
+</head>
+<body>
+    <nav class="top-bar">
+        <div class="title-area">
+            <h1><a href="/">KickCraze</a></h1>
+        </div>
+        <section class="top-bar-section">
+            <!-- Right Nav Section -->
+            <ul class="right">
+                <li><a href="/about">About</a></li>
+                <li><a href="/products">KickCraze Collection</a></li>
+                <li><a href="/cart">View Cart</a></li>
+                <li><a href="/orders">My Orders</a></li>
+                <li class="active"><a href="/contact">Contact</a></li>
+                <% if (user) { %> <!-- Check if user is logged in -->
+                    <li><a href="/profile">My Account</a></li>
+                    <li><a href="/logout">Log Out</a></li>
+                <% } else { %> <!-- If not logged in, show login/register links -->
+                    <li><a href="/login">Log In</a></li>
+                    <li><a href="/register">Register</a></li>
+                <% } %>
+            </ul>
+        </section>
+    </nav>
+    
+    <div class="row">
+        <div class="small-12">
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h2>Contact Us</h2>
+                    <p>If you have any inquiries about this project, feel free to reach out to our team:</p>
+                    <ul class="contact-list">
+                        <li>
+                            <img src="images/laireen.jpg" alt="Laireen Abrigante">
+                            <span>Laireen Abrigante</span>
+                        </li>
+                        <li>
+                            <img src="images/jamaica.jpg" alt="Jamaica Mistiola">
+                            <span>Jamaica Mistiola</span>
+                        </li>
+                        <li>
+                            <img src="images/allen.jpg" alt="Allen Dinglasan">
+                            <span>Allen Dinglasan</span>
+                        </li>
+                        <li>
+                            <img src="images/alvin.jpg" alt="Alvin Villaverde">
+                            <span>Alvin Villaverde</span>
+                        </li>
+                    </ul>
+                </div>
+                <form action="/send-message" method="POST">
+                    <input type="text" name="name" placeholder="Your Name" required>
+                    <input type="email" name="email" placeholder="Your Email" required>
+                    <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+                    <button type="submit">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 KickCraze. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

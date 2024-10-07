@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - KickCraze</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+        }
+
+        /* Navbar Styling */
+        .top-bar {
+            background-color: #333;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+        }
+
+        .top-bar .title-area h1 a {
+            color: #e46e24;
+            text-decoration: none;
+            padding-left: 20px;
+            font-size: 1.8em;
+        }
+
+        .top-bar .title-area h1 {
+            margin: 0;
+        }
+
+        .top-bar .left,
+        .top-bar .right {
+            list-style: none;
+            margin: 0;
+            padding-right: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .top-bar li {
+            padding: 0 10px;
+            position: relative; /* Needed for dropdown positioning */
+        }
+
+        .top-bar a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.1em;
+        }
+
+        .top-bar a:hover {
+            color: #ddd;
+        }
+
+        /* Dropdown Menu */
+        .dropdown {
+            display: none;
+            position: absolute;
+            background-color: #333;
+            min-width: 160px;
+            z-index: 1;
+            border-radius: 4px;
+        }
+
+        .dropdown a {
+            padding: 10px;
+            text-decoration: none;
+            color: #fff;
+            display: block;
+        }
+
+        .dropdown a:hover {
+            background-color: #444;
+        }
+
+        .top-bar li:hover .dropdown {
+            display: block; /* Show dropdown on hover */
+        }
+
+        /* Login Form Styling with Glassmorphism */
+        .login-container {
+            max-width: 700px;
+            margin: 30px auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.354); /* Background with transparency */
+            border-radius: 10px; /* Rounded corners */
+            backdrop-filter: blur(10px); /* Blur effect */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); /* Shadow */
+        }
+
+        .login-container input[type="email"],
+        .login-container input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1em;
+        }
+
+        .login-container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #e67e22;
+            color: white;
+            border: none;
+            font-size: 1.1em;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .login-container button:hover {
+            background-color: #d35400;
+        }
+
+        .login-container p {
+            text-align: center;
+        }
+
+        .login-container a {
+            color: #e67e22;
+            text-decoration: none;
+        }
+
+        /* Error Message */
+        .error {
+            color: red;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            position: relative;
+            width: 100%;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="top-bar">
+        <div class="title-area">
+            <h1><a href="/">KickCraze</a></h1>
+        </div>
+        <section class="top-bar-section">
+            <ul class="left">
+                <% if (typeof user !== "undefined" && user) { %>
+                    <li>
+                        <a href="#">My Account</a>
+                        <div class="dropdown">
+                            <a href="/profile">Profile</a>
+                            <a href="/logout">Log Out</a>
+                        </div>
+                    </li>
+                <% } else { %>
+                    <li><a href="/login">Log In</a></li>
+                    <li><a href="/register">Register</a></li>
+                <% } %>
+            </ul>
+        </section>
+    </nav>
+
+    <!-- Login Form -->
+    <div class="login-container">
+        <h2>Log In</h2>
+        
+        <!-- Error message if login fails -->
+        <% if (typeof error !== "undefined" && error) { %>
+            <p class="error"><%= error %></p>
+        <% } %>
+
+        <form action="/login" method="POST">
+            <input type="email" name="email" placeholder="Enter your email" required>
+            <input type="password" name="password" placeholder="Enter your password" required>
+            <button type="submit">Log In</button>
+        </form>
+
+        <p>Don't have an account? <a href="/register">Register here</a>.</p>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 KickCraze. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
